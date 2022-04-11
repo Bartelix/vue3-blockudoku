@@ -1,12 +1,14 @@
 <template>
   <div class="game-board">
     <div class="game-board-cells">
-      <div v-for="i in size * size" :key="i" :class="cellClasses(i)"></div>
+      <div v-for="(cell, i) in getCells" :key="i" :class="cellClasses(i)"></div>
     </div>
   </div>
 </template>
 
 <script>
+import { cells } from "../Game.js";
+
 export default {
   name: "GameBoard",
   components: {},
@@ -15,10 +17,15 @@ export default {
       size: 9,
     };
   },
+  computed: {
+    getCells() {
+      return cells(this.size * this.size);
+    },
+  },
   methods: {
     cellClasses(i) {
-      const r = Math.floor((i - 1) / this.size);
-      const c = (i - 1) % this.size;
+      const r = Math.floor(i / this.size);
+      const c = i % this.size;
 
       const isGray =
         ((r <= 2 || r >= 6) && (c <= 2 || c >= 6)) ||
