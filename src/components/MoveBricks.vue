@@ -1,18 +1,25 @@
 <template>
   <div class="move-bricks-wrapper">
     <div class="move-brick-wrapper" v-for="i in 3" :key="i">
-      <BaseBrick />
+      <component :is="bricks[i - 1]" />
     </div>
   </div>
 </template>
 
 <script>
 import BaseBrick from "./BaseBrick.vue";
+import HorizontalPadleBrick from "./HorizontalPadleBrick.vue";
 
 export default {
   name: "MoveBricks",
   components: {
     BaseBrick,
+    HorizontalPadleBrick,
+  },
+  computed: {
+    bricks() {
+      return ["BaseBrick", "BaseBrick", "HorizontalPadleBrick"];
+    },
   },
 };
 </script>
