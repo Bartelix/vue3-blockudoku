@@ -1,13 +1,16 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <GameBoard />
+  <MoveBricks />
 </template>
 
 <script>
 import GameBoard from "./components/GameBoard.vue";
+import MoveBricks from "./components/MoveBricks.vue";
+
 export default {
   name: "App",
-  components: { GameBoard },
+  components: { GameBoard, MoveBricks },
 };
 </script>
 
